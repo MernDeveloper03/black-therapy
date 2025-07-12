@@ -71,7 +71,7 @@ export default function ContactUs() {
             </p>
 
             <div className={styles.contactItem}>
-              <h4>📧 General Inquiries</h4>
+              <h4>General Inquiries</h4>
               <p className={styles.intro}>
                 Have a question that’s not addressed on our site?
                 <br />
@@ -83,7 +83,7 @@ export default function ContactUs() {
             </div>
 
             <div className={styles.contactItem}>
-              <h4>🛠️ Tech Support</h4>
+              <h4>Tech Support</h4>
               <p className={styles.intro}>
                 Have a question that’s not addressed on our site?
                 <br />
@@ -102,7 +102,7 @@ export default function ContactUs() {
                 <br />
                 We’d love to hear your thoughts, ideas, and feedback!
               </p>
-              <h4>🎤 Speaker Booking</h4>
+              <h4>Speaker Booking</h4>
               <a href="mailto:info@therapyforblackmen.org">info@therapyforblackmen.org</a>
             </div>
           </div>
