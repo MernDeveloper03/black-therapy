@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styles from './mianslider.module.css'
 
 const MianSlider = () => {
@@ -14,18 +15,18 @@ const MianSlider = () => {
 
       <div className={styles.content}>
         <div className={styles.textContent}>
-          <h1 className={styles.mainHeadline}>Supporting Black Men to Wholeness</h1>
-          <p className={styles.subtext}>Connect with a Therapist Today</p>
-          <button className={styles.ctaButton}>Get Support</button>
+          <h1 className={styles.mainHeadline}>You don't have to carry it alone anymore</h1>
+          <p className={styles.subtext}> Therapy for Black Men</p>
+          <Link to="/findTherapist" className={styles.ctaButton}>
+            Start Your Journey Home Toward Wholeness
+          </Link>
         </div>
       </div>
 
       <div className={styles.additionalMessaging}>
-        <div className={styles.message}>Supporting Black Men to Wholeness</div>
-        <div style={{ textTransform: 'uppercase' }} className={styles.message}>
-          THERAPY FOR BLACK MEN
+        <div className={styles.message}>
+          Healing isn’t a fix. It’s a return. A return to the you before the silence. Before the shame.
         </div>
-        <div className={styles.message}>Connect with a Therapist Today</div>
       </div>
 
       {/* <div className={styles.logoContainer}>

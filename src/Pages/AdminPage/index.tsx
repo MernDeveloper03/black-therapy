@@ -8,6 +8,10 @@ import AdminCoaches from './AdminCoaches'
 import AdminTherapists from './Admintherapist'
 import AdminAppoinments from './AdminAppoints'
 import AdminLoginModal from '../../Components/AdminLogin'
+import AdminResource from './AdminResource'
+import AdminFreeTheapy from './AdminfreeTheapy'
+import AdminContact from './AdminContactlist'
+import AdminNewLetterlist from './AdminNewLetterlist'
 
 export default function AdminPanel() {
   const [showLogin, setShowLogin] = useState(false)
@@ -68,6 +72,30 @@ export default function AdminPanel() {
               }
             />
             <Route
+              path="/FreeTherapy"
+              element={
+                <ProtectedRoute>
+                  <AdminFreeTheapy />
+                </ProtectedRoute>
+              }
+            />{' '}
+            <Route
+              path="/newLetters"
+              element={
+                <ProtectedRoute>
+                  <AdminNewLetterlist />
+                </ProtectedRoute>
+              }
+            />{' '}
+            <Route
+              path="/ContactList"
+              element={
+                <ProtectedRoute>
+                  <AdminContact />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/therapist"
               element={
                 <ProtectedRoute>
@@ -80,6 +108,14 @@ export default function AdminPanel() {
               element={
                 <ProtectedRoute>
                   <AdminAppoinments />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/resources"
+              element={
+                <ProtectedRoute>
+                  <AdminResource />
                 </ProtectedRoute>
               }
             />

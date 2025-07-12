@@ -1,22 +1,22 @@
 import { useEffect, useState } from 'react'
 import styles from './home.module.css'
 import MianSlider from '../../Components/MianSlider'
-import { Link } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { Link, useNavigate } from 'react-router-dom'
+import { motion, Transition, Variants } from 'framer-motion'
 import HomeSlider from '../../Components/HomeSilder'
-import Testimonials from '../../Components/Testimonial'
 import AuthModal from '../../Components/ModelAuth'
 import Reverence from '../../assets/wmremove-transformed111.jpeg'
 import Support from '../../assets/757b6fea-2487-4fd0-9a62-a4baec514e7b.jpeg'
 import Therapist from '../../assets/dfb58278-4ea5-44e3-bbfd-79dc456ff3b8.jpeg'
+import LiveTicker from '../../Components/LiveTracker'
+import Avatar from '../../assets/IMG_1518-1-1-1-644x1024.jpg'
 
-// Standardized animation variants
-const standardTransition = {
+const standardTransition: Transition = {
   duration: 0.6,
-  ease: [0.16, 1, 0.3, 1], // matches CSS cubic-bezier
+  ease: [0.16, 1, 0.3, 1],
 }
 
-const fadeInVariant = {
+const fadeInVariant: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -24,7 +24,7 @@ const fadeInVariant = {
   },
 }
 
-const fadeUpVariant = {
+const fadeUpVariant: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
@@ -33,7 +33,7 @@ const fadeUpVariant = {
   },
 }
 
-const staggerContainerVariant = {
+const staggerContainerVariant: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -45,7 +45,7 @@ const staggerContainerVariant = {
   },
 }
 
-const staggerItemVariant = {
+const staggerItemVariant: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -54,7 +54,7 @@ const staggerItemVariant = {
   },
 }
 
-const cardVariant = {
+const cardVariant: Variants = {
   hidden: { opacity: 0, y: 30 },
   visible: (i: number) => ({
     opacity: 1,
@@ -78,8 +78,7 @@ const cards = [
   {
     title: 'Free Help',
     desc: 'Apply for sponsored therapy sessions, thanks to our donors.',
-    image:
-      'https://bostonglobe-prod.cdn.arcpublishing.com/resizer/v2/DQTVFL3D7ZCSDEE2HNGOOY7T3I.jpg?auth=492ba5b949629887ff5935861ac3dc3d0de35d3d33a0396c462dc7c051e4b983&width=1440',
+    image: 'https://t3.ftcdn.net/jpg/03/38/55/48/360_F_338554860_bZNpmpwOqfJp1YG4Q9B1ckrLYyFlPhCr.jpg',
     button: 'Apply',
   },
   {
@@ -98,49 +97,104 @@ const cards = [
 
 // Support options data
 const supportOptions = [
-  { title: 'Individual Therapy', link: '/specialties/individual-therapy', desc: 'Personalized one-on-one care.' },
+  { title: 'Individual Therapy', link: '/findTherapist', desc: 'Personalized one-on-one care.' },
   {
     title: 'Couples Therapy',
-    link: '/specialties/couples-therapy',
+    link: '/findTherapist',
     desc: 'Strengthen your bond through guided sessions.',
   },
   {
     title: 'Family Therapy',
-    link: '/specialties/family-therapy',
+    link: '/findTherapist',
     desc: 'Foster healthier communication and dynamics.',
   },
-  { title: 'Child & Adolescent Support', link: '/specialties/child-adolescent', desc: 'Specialized care for youth.' },
-  { title: 'Group Therapy', link: '/specialties/group-therapy', desc: 'Heal together through shared experiences.' },
+  { title: 'Child & Adolescent Support', link: '/findTherapist', desc: 'Specialized care for youth.' },
+  { title: 'Group Therapy', link: '/findTherapist', desc: 'Heal together through shared experiences.' },
   {
     title: 'Faith-Based Therapy',
-    link: '/specialties/faith-based',
+    link: '/findTherapist',
     desc: 'Spiritually centered support for those seeking a faith-driven approach.',
   },
   {
     title: 'Trauma-Informed Therapy',
-    link: '/specialties/trauma-informed',
+    link: '/findTherapist',
     desc: 'Compassionate, trauma-sensitive care.',
   },
-  { title: 'Coaching', link: '/coaches', desc: 'Guidance toward personal growth and success.' },
+  { title: 'Coaching', link: '/findCoach', desc: 'Guidance toward personal growth and success.' },
+  {
+    title: 'Grief & Loss Support',
+    link: '/findTherapist',
+    desc: 'Gentle guidance to help you navigate sorrow, honor your losses, and move toward hope and restoration',
+  },
 ]
 
 // Values data
-const values = [
-  ['Healing', 'Starts with Support'],
-  ['Growth', 'Guided by Experts'],
-  ['Strength', 'In Vulnerability'],
-  ['Community', "You're Not Alone"],
+// const values = [
+//   ['Healing', 'Starts with Support'],
+//   ['Growth', 'Guided by Experts'],
+//   ['Strength', 'In Vulnerability'],
+//   ['Community', "You're Not Alone"],
+// ]
+const Therapistss = [
+  {
+    imageUrl: Avatar,
+    Heading: 'Therapist 1',
+  },
+  {
+    imageUrl: Avatar,
+    Heading: 'Therapist 2',
+  },
+  {
+    imageUrl: Avatar,
+    Heading: 'Therapist 3',
+  },
+  {
+    imageUrl: Avatar,
+    Heading: 'Therapist 4',
+  },
+  {
+    imageUrl: Avatar,
+    Heading: 'Therapist 5',
+  },
 ]
-
+const Coaches = [
+  {
+    imageUrl: Avatar,
+    Heading: 'Coache 1',
+  },
+  {
+    imageUrl: Avatar,
+    Heading: 'Coache 2',
+  },
+  {
+    imageUrl: Avatar,
+    Heading: 'Coache 3',
+  },
+  {
+    imageUrl: Avatar,
+    Heading: 'Coache 4',
+  },
+  {
+    imageUrl: Avatar,
+    Heading: 'Coache 5',
+  },
+]
 export default function Home() {
   const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
-
+  const navigate = useNavigate()
+  const handleGotoTerapist = () => {
+    navigate('/findTherapist')
+  }
+  // const handleGotoCoaches = () => {
+  //   navigate('/findCoach')
+  // }
   return (
     <>
+      <LiveTicker />
       {showModal && <AuthModal closeModal={() => setShowModal(false)} />}
 
       {/* Main Slider/Banner */}
@@ -155,7 +209,7 @@ export default function Home() {
             <motion.div variants={fadeUpVariant} initial="hidden" animate="visible" transition={{ duration: 0.8 }}>
               <div className={styles.quote}>"We see you. We hear you. We're here for you."</div>
               <p className={styles.overlayText}>
-                "Even in brokenness, light reaches us. Healing is not far—it lives within the reach of grace."
+                "Even in brokenness, light reaches us. Healing is not far, it lives within the reach of grace"
               </p>
             </motion.div>
 
@@ -187,8 +241,75 @@ export default function Home() {
         </div>
       </section>
 
+      {/* numbers section */}
+      <section className={styles.numbersSection}>
+        <div className={styles.sectionShape}></div>
+        <div className={styles.wrapper}>
+          <motion.div
+            variants={fadeUpVariant}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+          >
+            <p className={styles.sectionHeading} style={{ margin: '40px 0' }}>
+              The Need for Therapy Access for Black Men and Boys
+            </p>
+          </motion.div>
+
+          <motion.div
+            className={styles.cardWrapper}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={{
+              hidden: { opacity: 0, y: 30 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.8, staggerChildren: 0.2 },
+              },
+            }}
+          >
+            {[
+              {
+                number: '1 in 3',
+                text: 'Black men who need mental health support will never receive it due to cost, stigma, and accessibility issues.',
+              },
+              {
+                number: '63%',
+                text: 'of Black men believe that discussing mental health is seen as a sign of weakness in their communities.',
+              },
+              {
+                number: '4%',
+                text: 'Only 4% of U.S. therapists are Black, making culturally competent care difficult to find.',
+              },
+              {
+                number: '20%',
+                text: 'Black men are 20% more likely to experience major depression but are significantly less likely to receive care.',
+              },
+              {
+                number: '78%',
+                text: 'Suicide rates among Black youth have risen by 78% in the last two decades.',
+              },
+            ].map((fact, index) => (
+              <motion.div
+                key={index}
+                className={styles.factCard}
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+                whileHover={{ scale: 1.05, y: -10 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className={styles.factNumber}>{fact.number}</div>
+                <div className={styles.factText}>{fact.text}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+        <div className={styles.sectionShape}></div>
+      </section>
+
       {/* Values Section */}
-      <section className={styles.valuesSection} style={{ backgroundColor: '#f8f7f5' }}>
+      {/* <section className={styles.valuesSection} style={{ backgroundColor: '#f8f7f5' }}>
         <div className={styles.sectionShape}></div>
         <div className={styles.wrapper}>
           <motion.div
@@ -224,7 +345,7 @@ export default function Home() {
           </div>
         </div>
         <div className={styles.sectionShape}></div>
-      </section>
+      </section> */}
 
       {/* Service Cards Section */}
       <section className={styles.cardsSection}>
@@ -269,7 +390,7 @@ export default function Home() {
       </section>
 
       {/* Quote Banner Section */}
-      <section className={styles.quoteBannerSection}>
+      {/* <section className={styles.quoteBannerSection}>
         <div className={styles.quoteBanner}>
           <div className={styles.quoteBannerOverlay}>
             <motion.p
@@ -279,7 +400,7 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true, margin: '-100px' }}
             >
-              Even in brokenness, light reaches us. Healing is not far—it lives within the reach of grace.
+              Even in brokenness, light reaches us. Healing is not far it lives within the reach of grace.
             </motion.p>
 
             <div className={styles.bannerButtonGroup}>
@@ -310,7 +431,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Safe Space Section */}
       <section className={styles.safeSpaceSection}>
@@ -325,7 +446,7 @@ export default function Home() {
           >
             <img src={Reverence} alt="Reverence and Surrender" className={styles.safeSpaceImage} />
             <div className={styles.overlayQuote}>
-              <em>"Here, you are not just heard—you are held. You are not just seen—you are known."</em>
+              <em>"Here, you are not just heard you are held. You are not just seen you are known."</em>
             </div>
           </motion.div>
 
@@ -337,14 +458,14 @@ export default function Home() {
             viewport={{ once: true, margin: '-100px' }}
           >
             <motion.h2 variants={staggerItemVariant}>A Safe Space, Always</motion.h2>
-            <motion.p variants={staggerItemVariant}>
-              At Therapy for Black Men, we are more than a platform—we are a sanctuary for your voice and your healing.
+            <motion.p variants={staggerItemVariant} style={{ fontSize: '16px' }}>
+              At Therapy for Black Men, we are more than a platform we are a sanctuary for your voice and your healing.
               Here, you will find a judgment-free zone where you can lay down your burdens and speak your heart without
               fear.
             </motion.p>
-            <motion.p variants={staggerItemVariant}>
+            <motion.p variants={staggerItemVariant} style={{ fontSize: '16px' }}>
               We are built on the principles of compassion, empathy, honor, and respect, ensuring that every interaction
-              uplifts and empowers you. Your experiences, your pain, your triumphs—they all matter deeply to us.
+              uplifts and empowers you. Your experiences, your pain, your triumphs they all matter deeply to us.
             </motion.p>
             <motion.button
               variants={staggerItemVariant}
@@ -445,7 +566,7 @@ export default function Home() {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ delay: 0.2 }}
           >
-            <HomeSlider />
+            <HomeSlider sliderItems={Therapistss} />
           </motion.div>
 
           <motion.div
@@ -457,7 +578,7 @@ export default function Home() {
             transition={{ delay: 0.3 }}
           >
             <motion.button
-              onClick={() => setShowModal(true)}
+              onClick={handleGotoTerapist}
               className={styles.ctaButton}
               whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
             >
@@ -489,7 +610,7 @@ export default function Home() {
             viewport={{ once: true, margin: '-100px' }}
             transition={{ delay: 0.2 }}
           >
-            <HomeSlider />
+            <HomeSlider sliderItems={Coaches} />
           </motion.div>
 
           <motion.div
@@ -501,7 +622,7 @@ export default function Home() {
             transition={{ delay: 0.3 }}
           >
             <motion.button
-              onClick={() => setShowModal(true)}
+              // onClick={handleGotoCoaches}
               className={styles.ctaButton}
               whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
             >
@@ -513,21 +634,6 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className={styles.testimonialsSection}>
-        <div className={styles.sectionShape}></div>
-        <div className={styles.wrapper}>
-          <motion.div
-            variants={fadeInVariant}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-            transition={{ delay: 0.2 }}
-          >
-            <Testimonials />
-          </motion.div>
-        </div>
-        <div className={styles.sectionShape}></div>
-      </section>
     </>
   )
 }

@@ -213,7 +213,7 @@ const AuthModal: FC<AuthModalProps> = ({ type, onClose, onSwitch, onLoginSuccess
         <p className={styles.switchFormText}>
           {type === 'login' ? (
             <>
-              Don't have an account? <span onClick={isLoading ? undefined : onSwitch}>Register</span>
+              Don't have a therapist account? <span onClick={isLoading ? undefined : onSwitch}>Register</span>
             </>
           ) : (
             <>

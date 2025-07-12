@@ -129,7 +129,7 @@ export default function JoinAsATherapist() {
     <>
       <HeaderBar heading="Join As A Therapist" />
       <div className={styles.container}>
-        <h1 className={styles.heroTitle}>Heal. Support. Transform Lives.</h1>
+        <h1 className={styles.heroTitle}>Heal Support Transform Lives.</h1>
         <p className={styles.intro}>
           Black men deserve culturally competent mental health support from professionals who understand their unique
           experiences. You can be the therapist who makes a difference.
@@ -156,10 +156,10 @@ export default function JoinAsATherapist() {
 
         <h2 className={styles.sectionTitle}>Why Join Us?</h2>
         <ul className={styles.checkList}>
-          <li>✅ A Personalized Profile – Showcase your therapeutic approach, specializations, and expertise</li>
-          <li>✅ Direct Client Connections – Get discovered by Black men actively seeking mental health support</li>
-          <li>✅ Increased Visibility – Feature your practice on our platform and marketing materials</li>
-          <li>✅ Professional Community – Join a network of Black mental health professionals</li>
+          <li>A Personalized Profile – Showcase your therapeutic approach, specializations, and expertise</li>
+          <li>Direct Client Connections – Get discovered by Black men actively seeking mental health support</li>
+          <li>Increased Visibility – Feature your practice on our platform and marketing materials</li>
+          <li>Professional Community – Join a network of Black mental health professionals</li>
         </ul>
 
         <h2 className={styles.sectionTitle}>Who Can Join?</h2>
@@ -169,7 +169,7 @@ export default function JoinAsATherapist() {
         </p>
 
         <h2 className={styles.sectionTitle}>Membership Details</h2>
-        <p className={styles.highlight}>💼 Join for Just $20/Month</p>
+        <p className={styles.highlight}>Join for Just $20/Month</p>
         <ul className={styles.bulletList}>
           <li>A customizable profile that allows potential clients to find and contact you</li>
           <li>Access to our therapist community and professional development resources</li>

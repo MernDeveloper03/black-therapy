@@ -1,5 +1,5 @@
 import './App.css'
-// import AppRouter from './Share/Routing'
+import AppRouter from './Share/Routing'
 function App() {
   // useEffect(() => {
   //   const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -14,8 +14,7 @@ function App() {
   // }, [])
   return (
     <div>
-     <p> Under Maintaince</p>
-      {/* <AppRouter /> */}
+      <AppRouter />
     </div>
   )
 }

@@ -2,6 +2,12 @@ import { useState } from 'react'
 import styles from './sidebar.module.css'
 import { FaHome, FaUserAlt, FaBars } from 'react-icons/fa'
 import { NavLink, useNavigate } from 'react-router-dom'
+import { GrResources } from 'react-icons/gr'
+import { IoMdContact } from 'react-icons/io'
+import { MdRememberMe } from 'react-icons/md'
+import { RiPsychotherapyFill } from 'react-icons/ri'
+
+import { FaListAlt } from 'react-icons/fa'
 import { PiArticleNyTimesBold } from 'react-icons/pi'
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true)
@@ -16,10 +22,14 @@ const Sidebar = () => {
 
   const navItems = [
     { path: '/admin/dashBoard', label: 'Dashboard', icon: <FaHome /> },
-    { path: '/admin/appointments', label: 'Appointments', icon: <FaHome /> },
+    { path: '/admin/appointments', label: 'Appointments', icon: <FaListAlt /> },
     { path: '/admin/coaches', label: 'Coaches', icon: <FaUserAlt /> },
     { path: '/admin/therapist', label: 'Therapists', icon: <FaUserAlt /> },
     { path: '/admin/bloges', label: 'Blogs', icon: <PiArticleNyTimesBold /> },
+    { path: '/admin/resources', label: 'Resources', icon: <GrResources /> },
+    { path: '/admin/FreeTherapy', label: 'Free Therapy', icon: <RiPsychotherapyFill /> },
+    { path: '/admin/newLetters', label: 'NewLetters', icon: <MdRememberMe /> },
+    { path: '/admin/ContactList', label: 'Contact List', icon: <IoMdContact /> },
   ]
 
   return (
