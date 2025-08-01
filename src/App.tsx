@@ -1,20 +1,25 @@
+import { useEffect } from 'react'
 import './App.css'
-// import AppRouter from './Share/Routing'
+import AppRouter from './Share/Routing'
+import { onAuthStateChanged } from 'firebase/auth'
+import { notifyError, notifySuccess } from './Components/Toast'
+import { auth } from './Share/FireBase'
 function App() {
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       notifySuccess('Firebase connected. User:')
-  //     } else {
-  //       notifyError('Firebase connected. No user signed in.')
-  //     }
-  //   })
+  
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        notifySuccess('Firebase connected. User:')
+      } else {
+        notifyError('Firebase connected. No user signed in.')
+      }
+    })
 
-  //   return () => unsubscribe()
-  // }, [])
+    return () => unsubscribe()
+  }, [])
   return (
     <div>
-      Under development
+      <AppRouter />
     </div>
     // <div>
     //   <AppRouter />
