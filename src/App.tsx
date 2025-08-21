@@ -4,6 +4,7 @@ import AppRouter from './Share/Routing'
 import { onAuthStateChanged } from 'firebase/auth'
 import { notifyError, notifySuccess } from './Components/Toast'
 import { auth } from './Share/FireBase'
+
 function App() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -16,13 +17,11 @@ function App() {
 
     return () => unsubscribe()
   }, [])
+
   return (
     <div>
       <AppRouter />
     </div>
-    // <div>
-    //   <AppRouter />
-    // </div>
   )
 }
 
